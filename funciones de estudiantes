@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+extern int totalEstudiantes;
+extern int totalRepresentantes;
+extern struct Estudiante estudiantes[];
+extern struct Representante representantes[];
+
+void registrarEstudiante() {
+    if (totalRepresentantes == 0) {
+        cout << "Debe registrar un representante primero.\n";
+        return;
+    }
+
+    cout << "\n--- Registrar Estudiante ---\n";
+    cout << "Nombre: ";
+    cin >> estudiantes[totalEstudiantes].nombre;
+    cout << "Apellido: ";
+    cin >> estudiantes[totalEstudiantes].apellido;
+    cout << "Direccion: ";
+    cin >> estudiantes[totalEstudiantes].direccion;
+    cout << "Seccion: ";
+    cin >> estudiantes[totalEstudiantes].seccion;
+
+    cout << "ID del representante: ";
+    cin >> estudiantes[totalEstudiantes].representanteID;
+
+    totalEstudiantes++;
+}
+void consultarEstudiantes() {
+    cout << "\n--- Lista de Estudiantes ---\n";
+    for (int i = 0; i < totalEstudiantes; i++) {
+        cout << i << " - " << estudiantes[i].nombre << " "
+             << estudiantes[i].apellido << ", Seccion: "
+             << estudiantes[i].seccion << "\n";
+    }
+}
