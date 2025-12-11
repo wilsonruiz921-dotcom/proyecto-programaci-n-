@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+struct Estudiante {
+    string nombre;
+    string apellido;
+    string direccion;
+    string seccion;
+    int representanteID;
+};
+
+struct Representante {
+    string nombre;
+    string apellido;
+    string direccion;
+};
+
+Estudiante estudiantes[100];
+Representante representantes[100];
+int totalEstudiantes = 0;
+int totalRepresentantes = 0;
+
+void registrarRepresentante() {
+    cout << "\n--- Registrar Representante ---\n";
+    cout << "Nombre: ";
+    cin >> representantes[totalRepresentantes].nombre;
+    cout << "Apellido: ";
+    cin >> representantes[totalRepresentantes].apellido;
+    cout << "Direccion: ";
+    cin >> representantes[totalRepresentantes].direccion;
+
+    cout << "Representante registrado con ID: " << totalRepresentantes << "\n";
+    totalRepresentantes++;
+}
