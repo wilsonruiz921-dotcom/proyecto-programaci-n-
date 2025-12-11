@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void registrarEstudiante() {
+    ofstream archivo("estudiantes.txt", ios::app);
+
+    string nombre, apellido, direccion, seccion, representanteID;
+
+    cout << "\n--- Registrar Estudiante ---\n";
+    cout << "Nombre: ";
+    cin >> nombre;
+    cout << "Apellido: ";
+    cin >> apellido;
+    cout << "Direccion: ";
+    cin >> direccion;
+    cout << "Seccion: ";
+    cin >> seccion;
+    cout << "ID del representante: ";
+    cin >> representanteID;
+
+    archivo << nombre << " " << apellido << " " << direccion << " "
+            << seccion << " " << representanteID << "\n";
+
+    archivo.close();
+    cout << "Estudiante guardado.\n";
+}
+
+void consultarEstudiantes() {
+    ifstream archivo("estudiantes.txt");
+    string nombre, apellido, direccion, seccion, representanteID;
+
+cout << "\n--- Lista de Estudiantes ---\n";
+
+    while (archivo >> nombre >> apellido >> direccion >> seccion >> representanteID) {
+        cout << nombre << " " << apellido 
+             << " - Seccion " << seccion 
+             << " (Rep ID: " << representanteID << ")\n";
+    }
+
+    archivo.close();
