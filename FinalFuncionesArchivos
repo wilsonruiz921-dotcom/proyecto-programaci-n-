@@ -1,0 +1,96 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void registrarRepresentante() {
+    ofstream archivo("representantes.txt", ios::app);
+
+    string nombre, apellido, direccion;
+
+    cout << "\n--- Registrar Representante ---\n";
+    cout << "Nombre: ";
+    cin >> nombre;
+    cout << "Apellido: ";
+    cin >> apellido;
+    cout << "Direccion: ";
+    cin >> direccion;
+
+    archivo << nombre << " " << apellido << " " << direccion << "\n";
+    archivo.close();
+
+    cout << "Representante guardado.\n";
+}
+
+void registrarEstudiante() {
+    ofstream archivo("estudiantes.txt", ios::app);
+
+    string nombre, apellido, direccion, seccion, representanteID;
+
+    cout << "\n--- Registrar Estudiante ---\n";
+    cout << "Nombre: ";
+    cin >> nombre;
+    cout << "Apellido: ";
+    cin >> apellido;
+    cout << "Direccion: ";
+    cin >> direccion;
+    cout << "Seccion: ";
+    cin >> seccion;
+    cout << "ID del representante: ";
+    cin >> representanteID;
+
+    archivo << nombre << " " << apellido << " " << direccion << " "
+            << seccion << " " << representanteID << "\n";
+
+    archivo.close();
+    cout << "Estudiante guardado.\n";
+}
+
+void consultarEstudiantes() {
+    ifstream archivo("estudiantes.txt");
+    string nombre, apellido, direccion, seccion, representanteID;
+
+    cout << "\n--- Lista de Estudiantes ---\n";
+
+    while (archivo >> nombre >> apellido >> direccion >> seccion >> representanteID) {
+        cout << nombre << " " << apellido << " - " << seccion
+             << " (RepID: " << representanteID << ")\n";
+    }
+
+    archivo.close();
+}
+
+void consultarRepresentantes() {
+    ifstream archivo("representantes.txt");
+    string nombre, apellido, direccion;
+
+    cout << "\n--- Lista de Representantes ---\n";
+
+    while (archivo >> nombre >> apellido >> direccion) {
+        cout << nombre << " " << apellido << "\n";
+    }
+
+    archivo.close();
+}
+
+int main() {
+    int opcion;
+
+    do {
+        cout << "\n--- Menu Principal ---\n";
+        cout << "1. Registrar Representante\n";
+        cout << "2. Registrar Estudiante\n";
+        cout << "3. Consultar Estudiantes\n";
+        cout << "4. Consultar Representantes\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) registrarRepresentante();
+        else if (opcion == 2) registrarEstudiante();
+        else if (opcion == 3) consultarEstudiantes();
+        else if (opcion == 4) consultarRepresentantes();
+
+    } while (opcion != 5);
+
+    return 0;
+}
