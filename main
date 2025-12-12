@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+extern void registrarRepresentante();
+extern void registrarEstudiante();
+extern void consultarRepresentantes();
+extern void consultarEstudiantes();
+
+int main() {
+    int opcion;
+
+    do {
+        cout << "\n--- Menu Principal ---\n";
+        cout << "1. Registrar Representante\n";
+        cout << "2. Registrar Estudiante\n";
+        cout << "3. Consultar Estudiantes\n";
+        cout << "4. Consultar Representantes\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) registrarRepresentante();
+        else if (opcion == 2) registrarEstudiante();
+        else if (opcion == 3) consultarEstudiantes();
+        else if (opcion == 4) consultarRepresentantes();
+
+    } while (opcion != 5);
+
+    return 0;
+}
